@@ -7,6 +7,7 @@ const navItems = [
   { name: "Buy Now", to: "/buy" },
   { name: "Track Order", to: "/track" },
   { name: "Contact", to: "/contact" },
+  { name: "Devs", to: "/devs" },
 ];
 
 export default function Navbar() {

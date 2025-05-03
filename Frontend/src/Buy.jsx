@@ -34,13 +34,6 @@ function Buy() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth",
-    });
-  };
-
   const addToCart = (product) => {
     setCart((prev) => {
       const existing = prev.find((item) => item.id === product.id);

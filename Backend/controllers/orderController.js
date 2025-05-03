@@ -8,7 +8,7 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
-exports.createOrder = async (req, res) => {
+createOrder = async (req, res) => {
   const { contact, address, items, totalAmount } = req.body;
   try {
     const options = {
@@ -40,7 +40,7 @@ exports.createOrder = async (req, res) => {
   }
 };
 
-exports.verifyPayment = async (req, res) => {
+verifyPayment = async (req, res) => {
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
     req.body;
 
@@ -60,3 +60,38 @@ exports.verifyPayment = async (req, res) => {
     res.status(400).json({ message: "Payment verification failed" });
   }
 };
+
+const getall = async (req, res) => {
+  try {
+    const data = await Order.find();
+    res.status(200).json({ data: data, msg: "Got data successfully" });
+  } catch (err) {
+    res.status(500).json({ Msg: "There was an internal server error!" });
+  }
+};
+
+const updateStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const validStatuses = ["PENDING", "PAID", "SHIPPED"];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ msg: "Invalid status" });
+    }
+
+    const updated = await Order.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true },
+    );
+
+    if (!updated) return res.status(404).json({ msg: "Order not found" });
+
+    res.status(200).json({ msg: "Status updated", order: updated });
+  } catch (err) {
+    res.status(500).json({ msg: "Server error", error: err.message });
+  }
+};
+
+module.exports = { verifyPayment, createOrder, getall, updateStatus };
