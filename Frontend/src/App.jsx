@@ -6,6 +6,7 @@ import Track from "./Track";
 import Contact from "./Contact";
 import Home from "./Home";
 import Dev from "./Dev";
+import DevPrivateRoute from "./components/DevPrivateRoute";
 
 function App() {
   return (
@@ -16,7 +17,14 @@ function App() {
         <Route path="/buy" element={<Buy />} />
         <Route path="/track" element={<Track />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/devs" element={<Dev />} />
+        <Route
+          path="/devs"
+          element={
+            <DevPrivateRoute>
+              <Dev />
+            </DevPrivateRoute>
+          }
+        />
       </Routes>
     </>
   );
