@@ -10,7 +10,15 @@ require("dotenv").config();
 const app = express();
 const url = process.env.MONGO_URI;
 
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV == "production"
+        ? "http://localhost:3000"
+        : "https://product-page-lqn6xqbdt-mayurs-projects-8fbc2ff1.vercel.app",
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(cookieParser());
 
