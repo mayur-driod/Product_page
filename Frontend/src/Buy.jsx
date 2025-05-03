@@ -6,21 +6,27 @@ import ScrollToBottomButton from "./components/ScrollToBottomButton";
 const products = [
   {
     id: "p1",
-    name: "Product One",
+    name: "Rock Dragon",
     price: 499,
-    pic: "https://th.bing.com/th/id/OIP.1KVlCiv3s-5Vh_457_4LoQHaGY?rs=1&pid=ImgDetMain",
+    pic: "https://res.cloudinary.com/dh4zgual6/image/upload/v1744860720/TerraQuest/Sightings/rjorkavfnvpoivc3wqbc.jpg",
   },
   {
     id: "p2",
-    name: "Product Two",
+    name: "Red Rumped Swallow",
     price: 799,
-    pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2qYMHJPHmmXKcJ1GDxsQnQaGSxylWUePvFw&s",
+    pic: "https://res.cloudinary.com/dh4zgual6/image/upload/v1745299237/TerraQuest/Sightings/zwvmbvlel8h7sqc4wo2v.jpg",
   },
   {
     id: "p3",
-    name: "Product Three",
+    name: "Malabar Pit Viper",
     price: 999,
-    pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2BLTynbKQhO5K-zLGmYx0ZxS45Aqmsm8Rjw&s",
+    pic: "https://res.cloudinary.com/dh4zgual6/image/upload/v1744810516/TerraQuest/Sightings/oiftxsbprqhn8dbeprk9.jpg",
+  },
+  {
+    id: "p4",
+    name: "Oriental Garden Lizard",
+    price: 1299,
+    pic: "https://res.cloudinary.com/dh4zgual6/image/upload/v1744793542/TerraQuest/Sightings/xcok7xn8d7jblxkylagi.jpg",
   },
 ];
 
@@ -61,7 +67,7 @@ function Buy() {
               className="p-4 bg-white border rounded-lg shadow hover:shadow-lg transition"
             >
               <h2 className="text-lg font-semibold">{p.name}</h2>
-              <img className="w-50 h-50 object-cover rounded" src={p.pic} />
+              <img className="w-full h-50 object-cover rounded" src={p.pic} />
               <p className="text-sm mb-2">₹{p.price}</p>
               <button
                 className="mt-auto bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
