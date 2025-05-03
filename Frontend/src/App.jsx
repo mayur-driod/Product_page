@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Buy from "./buy";
+import Buy from "./Buy";
 import Navbar from "./components/Navbar";
 import Track from "./Track";
 import Contact from "./Contact";
