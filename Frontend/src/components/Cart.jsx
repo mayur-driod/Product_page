@@ -15,12 +15,15 @@ const Cart = ({ cart, setCart }) => {
 
     try {
       // 1. Create order on backend
-      const { data } = await axios.post("http://localhost:3000/api/create", {
-        contact,
-        address,
-        items: cart,
-        totalAmount: total,
-      });
+      const { data } = await axios.post(
+        "https://product-page-pcoy.onrender.com/api/create",
+        {
+          contact,
+          address,
+          items: cart,
+          totalAmount: total,
+        },
+      );
 
       // 2. Open Razorpay checkout
       const options = {
@@ -32,7 +35,7 @@ const Cart = ({ cart, setCart }) => {
         order_id: data.orderId,
         handler: async function (response) {
           const verifyRes = await axios.post(
-            "http://localhost:3000/api/verify",
+            "https://product-page-pcoy.onrender.com/api/verify",
             response,
           );
           alert("Payment successful! 🎉 Order ID: " + verifyRes.data.order._id);

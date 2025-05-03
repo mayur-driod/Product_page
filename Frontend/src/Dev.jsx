@@ -8,7 +8,9 @@ function Dev() {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/getall");
+        const res = await axios.get(
+          "https://product-page-pcoy.onrender.com/api/getall",
+        );
         setData(res.data.data);
       } catch (err) {
         console.log(err);
@@ -57,7 +59,7 @@ function Dev() {
                       const newStatus = e.target.value;
                       try {
                         await axios.put(
-                          `http://localhost:3000/api/update-status/${item._id}`,
+                          `https://product-page-pcoy.onrender.com/api/update-status/${item._id}`,
                           {
                             status: newStatus,
                           },
