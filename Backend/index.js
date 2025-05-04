@@ -10,15 +10,19 @@ require("dotenv").config();
 const app = express();
 const url = process.env.MONGO_URI;
 
+const allowedOrigins = [
+  "https://product-page-git-main-mayurs-projects-8fbc2ff1.vercel.app", // vercel
+  "http://localhost:3000",
+  "http://localhost:5173", //local
+];
+
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV == "production"
-        ? "http://localhost:3000"
-        : "https://product-page-lqn6xqbdt-mayurs-projects-8fbc2ff1.vercel.app",
-    credentials: true,
+    origin: allowedOrigins,
+    credentials: true, // if you're using cookies or auth headers
   }),
 );
+
 app.use(express.json());
 app.use(cookieParser());
 
